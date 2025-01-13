@@ -6,25 +6,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <!-- A-Frame Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
-    <!-- Custom Components -->
     <script src="js/components/artwork-frame.js"></script>
     <script src="js/components/info-panel.js"></script>
     <script src="js/components/smooth-navigation.js"></script>
-    <script src="js/components/artwork-zoom.js"></script>
+    <script src="js/components/custom-controls.js"></script>
     <script src="js/main.js"></script>
 </head>
 
 <body>
-    <a-scene loading-screen="dotsColor: #fff; backgroundColor: #000">
-        <!-- Asset Management System -->
+    <a-scene loading-screen="dotsColor: #fff; backgroundColor: #000"
+        renderer="antialias: false; precision: medium; physicallyCorrectLights: false" light="defaultLightsEnabled: false"
+        shadow="enabled: false" fog="false">
         <a-assets>
             <!-- Artwork -->
             <img id="starry-night" src="assets/artwork/starry-night.jpg" alt="Starry Night" crossorigin="anonymous">
             <img id="mona-lisa" src="assets/artwork/mona-lisa.jpg" alt="Mona Lisa" crossorigin="anonymous">
             <img id="the-scream" src="assets/artwork/the-scream.jpg" alt="The Scream" crossorigin="anonymous">
             <img id="girl-with-pearl" src="assets/artwork/girl-with-pearl.jpg" alt="Girl with a Pearl Earring" crossorigin="anonymous">
+            <img id="birth-of-venus" src="assets/artwork/birth-of-venus.jpeg" alt="The Birth of Venus" crossorigin="anonymous">
+            <img id="water-lilies" src="assets/artwork/water-lilies.jpg" alt="Water Lilies" crossorigin="anonymous">
+            <img id="persistence-of-memory" src="assets/artwork/persistence-of-memory.jpg" alt="The Persistence of Memory"
+                crossorigin="anonymous">
+            <img id="night-watch" src="assets/artwork/night-watch.jpg" alt="The Night Watch" crossorigin="anonymous">
+            <img id="guernica" src="assets/artwork/guernica.jpg" alt="Guernica" crossorigin="anonymous">
+            <img id="creation-of-adam" src="assets/artwork/creation-of-adam.jpg" alt="The Creation of Adam" crossorigin="anonymous">
+            <img id="son-of-man" src="assets/artwork/son-of-man.jpg" alt="The Son of Man" crossorigin="anonymous">
 
             <!-- Textures -->
             <img id="marble-floor" src="assets/textures/marble-floor.jpg" alt="Marble Floor Texture" crossorigin="anonymous">
@@ -32,6 +39,7 @@
             <img id="ceiling-texture" src="assets/textures/ceiling-texture.jpg" alt="Ceiling Texture" crossorigin="anonymous">
             <img id="column-texture" src="assets/textures/column-texture.jpg" alt="Column Texture" crossorigin="anonymous">
             <img id="frame-texture" src="assets/textures/frame-texture.jpg" alt="Frame Texture" crossorigin="anonymous">
+            <img id="gradient-texture" src="assets/textures/radial-gradient.png" alt="Gradient" crossorigin="anonymous">
         </a-assets>
 
         <!-- Museum Structure -->
@@ -39,11 +47,10 @@
         </a-entity>
 
         <!-- Camera Rig -->
-        <a-entity id="camera-rig" position="0 1.6 3">
-            <a-camera look-controls="reverseMouseDrag: true" wasd-controls="acceleration: 15" position="0 0 0">
-                <a-cursor color="#444" raycaster="far: 20"
-                    animation__click="property: scale; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150; startEvents: click"
-                    animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150; startEvents: fusing"></a-cursor>
+        <a-entity id="camera-rig" position="0 1.6 0">
+            <a-camera custom-controls="moveSpeed: 0.15; lookSpeed: 2" look-controls="enabled: false"
+                wasd-controls="enabled: false">
+                <a-cursor color="#444" raycaster="far: 20"></a-cursor>
             </a-camera>
         </a-entity>
 

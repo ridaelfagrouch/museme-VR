@@ -12,12 +12,12 @@ function initializeMuseum() {
 }
 
 function createRoom(parent) {
-  // Create walls - now with all four sides
+  // Create larger walls - increased dimensions
   const walls = [
-    { position: "0 3 -7", rotation: "0 0 0", width: 14, height: 6 }, // North wall
-    { position: "-7 3 0", rotation: "0 90 0", width: 14, height: 6 }, // West wall
-    { position: "7 3 0", rotation: "0 -90 0", width: 14, height: 6 }, // East wall
-    { position: "0 3 7", rotation: "0 180 0", width: 14, height: 6 }, // South wall
+    { position: "0 5 -12", rotation: "0 0 0", width: 24, height: 10 }, // North wall
+    { position: "-12 5 0", rotation: "0 90 0", width: 24, height: 10 }, // West wall
+    { position: "12 5 0", rotation: "0 -90 0", width: 24, height: 10 }, // East wall
+    { position: "0 5 12", rotation: "0 180 0", width: 24, height: 10 }, // South wall
   ];
 
   walls.forEach((wallData) => {
@@ -34,24 +34,24 @@ function createRoom(parent) {
     addArchitecturalDetails(parent, wallData);
   });
 
-  // Floor
+  // Larger floor
   const floor = document.createElement("a-plane");
   floor.setAttribute("rotation", "-90 0 0");
-  floor.setAttribute("width", "14");
-  floor.setAttribute("height", "14");
+  floor.setAttribute("width", "24");
+  floor.setAttribute("height", "24");
   floor.setAttribute("src", "#marble-floor");
-  floor.setAttribute("repeat", "7 7");
+  floor.setAttribute("repeat", "12 12");
   floor.setAttribute("smooth-navigation", "");
   parent.appendChild(floor);
 
-  // Ceiling with pattern
+  // Larger ceiling
   const ceiling = document.createElement("a-plane");
-  ceiling.setAttribute("position", "0 6 0");
+  ceiling.setAttribute("position", "0 10 0");
   ceiling.setAttribute("rotation", "90 0 0");
-  ceiling.setAttribute("width", "14");
-  ceiling.setAttribute("height", "14");
+  ceiling.setAttribute("width", "24");
+  ceiling.setAttribute("height", "24");
   ceiling.setAttribute("src", "#ceiling-texture");
-  ceiling.setAttribute("repeat", "7 7");
+  ceiling.setAttribute("repeat", "12 12");
   parent.appendChild(ceiling);
 }
 
@@ -60,7 +60,7 @@ function addArchitecturalDetails(parent, wallData) {
 
   // Crown molding
   const crown = document.createElement("a-box");
-  crown.setAttribute("position", `${pos[0]} 5.9 ${pos[2]}`);
+  crown.setAttribute("position", `${pos[0]} 9.9 ${pos[2]}`);
   crown.setAttribute("rotation", wallData.rotation);
   crown.setAttribute("width", wallData.width);
   crown.setAttribute("height", "0.2");
@@ -81,9 +81,9 @@ function addArchitecturalDetails(parent, wallData) {
 
 function setupArtwork(parent) {
   const artworkData = [
-    // North wall (front)
+    // North wall artworks (front)
     {
-      position: "0 3 -6.8",
+      position: "-8 4 -11.8",
       rotation: "0 0 0",
       wall: "north",
       artwork: {
@@ -95,25 +95,10 @@ function setupArtwork(parent) {
         height: 3,
       },
     },
-    // West wall (left)
     {
-      position: "-6.8 3 0",
-      rotation: "0 90 0",
-      wall: "west",
-      artwork: {
-        src: "#mona-lisa",
-        title: "Mona Lisa",
-        artist: "Leonardo da Vinci",
-        year: "1503",
-        width: 4,
-        height: 3,
-      },
-    },
-    // East wall (right)
-    {
-      position: "6.8 3 0",
-      rotation: "0 -90 0",
-      wall: "east",
+      position: "0 4 -11.8",
+      rotation: "0 0 0",
+      wall: "north",
       artwork: {
         src: "#the-scream",
         title: "The Scream",
@@ -123,16 +108,138 @@ function setupArtwork(parent) {
         height: 3,
       },
     },
-    // South wall (back)
     {
-      position: "0 3 6.8",
-      rotation: "0 180 0",
-      wall: "south",
+      position: "8 4 -11.8",
+      rotation: "0 0 0",
+      wall: "north",
       artwork: {
         src: "#girl-with-pearl",
         title: "Girl with a Pearl Earring",
         artist: "Johannes Vermeer",
         year: "1665",
+        width: 4,
+        height: 3,
+      },
+    },
+
+    // East wall artworks (right)
+    {
+      position: "11.8 4 -8",
+      rotation: "0 -90 0",
+      wall: "east",
+      artwork: {
+        src: "#mona-lisa",
+        title: "Mona Lisa",
+        artist: "Leonardo da Vinci",
+        year: "1503",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "11.8 4 0",
+      rotation: "0 -90 0",
+      wall: "east",
+      artwork: {
+        src: "#birth-of-venus",
+        title: "The Birth of Venus",
+        artist: "Sandro Botticelli",
+        year: "1485",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "11.8 4 8",
+      rotation: "0 -90 0",
+      wall: "east",
+      artwork: {
+        src: "#water-lilies",
+        title: "Water Lilies",
+        artist: "Claude Monet",
+        year: "1919",
+        width: 4,
+        height: 3,
+      },
+    },
+
+    // South wall artworks (back)
+    {
+      position: "-8 4 11.8",
+      rotation: "0 180 0",
+      wall: "south",
+      artwork: {
+        src: "#persistence-of-memory",
+        title: "The Persistence of Memory",
+        artist: "Salvador Dalí",
+        year: "1931",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "0 4 11.8",
+      rotation: "0 180 0",
+      wall: "south",
+      artwork: {
+        src: "#night-watch",
+        title: "The Night Watch",
+        artist: "Rembrandt",
+        year: "1642",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "8 4 11.8",
+      rotation: "0 180 0",
+      wall: "south",
+      artwork: {
+        src: "#son-of-man",
+        title: "The Son of Man",
+        artist: "René Magritte",
+        year: "1964",
+        width: 4,
+        height: 3,
+      },
+    },
+
+    // West wall artworks (left)
+    {
+      position: "-11.8 4 -8",
+      rotation: "0 90 0",
+      wall: "west",
+      artwork: {
+        src: "#guernica",
+        title: "Guernica",
+        artist: "Pablo Picasso",
+        year: "1937",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "-11.8 4 0",
+      rotation: "0 90 0",
+      wall: "west",
+      artwork: {
+        src: "#creation-of-adam",
+        title: "The Creation of Adam",
+        artist: "Michelangelo",
+        year: "1512",
+        width: 4,
+        height: 3,
+      },
+    },
+    {
+      position: "-11.8 4 8",
+      rotation: "0 90 0",
+      wall: "west",
+      artwork: {
+        src: "#guernica",
+        title: "Guernica",
+        artist: "Pablo Picasso",
+        year: "1937",
         width: 4,
         height: 3,
       },
@@ -172,15 +279,15 @@ function setupArtwork(parent) {
 
     // Create each frame part
     frameParts.forEach((part) => {
-      const framePart = document.createElement("a-box");
-      framePart.setAttribute("position", part.pos);
-      framePart.setAttribute("width", part.dim.split(" ")[0]);
-      framePart.setAttribute("height", part.dim.split(" ")[1]);
-      framePart.setAttribute("depth", part.dim.split(" ")[2]);
-      framePart.setAttribute("color", frameColor);
-      framePart.setAttribute("metalness", "0.6");
-      framePart.setAttribute("roughness", "0.3");
-      frame.appendChild(framePart);
+      const framePiece = document.createElement("a-box");
+      framePiece.setAttribute("position", part.pos);
+      framePiece.setAttribute("width", part.dim.split(" ")[0]);
+      framePiece.setAttribute("height", part.dim.split(" ")[1]);
+      framePiece.setAttribute("depth", part.dim.split(" ")[2]);
+      framePiece.setAttribute("color", frameColor);
+      framePiece.setAttribute("metalness", "0.6");
+      framePiece.setAttribute("roughness", "0.3");
+      frame.appendChild(framePiece);
     });
 
     // Create black backing behind artwork
@@ -198,21 +305,75 @@ function setupArtwork(parent) {
     artwork.setAttribute("height", data.artwork.height);
     artwork.setAttribute("position", "0 0 0.01");
 
-    // Add zoom and info panel components to the artwork
-    artwork.setAttribute("artwork-zoom", { wall: data.wall });
+    // Add enhanced zoom configuration
+    artwork.setAttribute("artwork-zoom", {
+      wall: data.wall,
+      transitionSpeed: 1500,
+      viewingDistance: 2,
+      verticalOffset: 0.2,
+    });
+
+    // Set geometry component
+    artwork.setAttribute("geometry", {
+      primitive: "plane",
+      width: data.artwork.width,
+      height: data.artwork.height,
+    });
+
+    // Add info panel component
     artwork.setAttribute("info-panel", {
       title: data.artwork.title,
       artist: data.artwork.artist,
       year: data.artwork.year,
     });
 
-    // Add artwork to frame
     frame.appendChild(artwork);
 
-    // Add frame to container
-    artworkContainer.appendChild(frame);
+    // Add title text above the frame with better styling
+    const titleContainer = document.createElement("a-entity");
+    titleContainer.setAttribute(
+      "position",
+      `0 ${data.artwork.height / 2 + 0.4} 0`
+    );
 
-    // Add container to parent
+    // Add the title text
+    const titleText = document.createElement("a-text");
+    titleText.setAttribute(
+      "value",
+      `${data.artwork.title} (${data.artwork.year})`
+    );
+    titleText.setAttribute("position", "0 0 0.04");
+    titleText.setAttribute("align", "center");
+    titleText.setAttribute("baseline", "center");
+    titleText.setAttribute("width", "4");
+    titleText.setAttribute("color", "#FFFFFF");
+    titleText.setAttribute("scale", "1 1 1");
+
+    titleContainer.appendChild(titleText);
+    frame.appendChild(titleContainer);
+
+    // Add spotlight for the artwork with optimized settings
+    const spotlight = document.createElement("a-light");
+    spotlight.setAttribute("type", "spot");
+    spotlight.setAttribute("position", `0 ${data.artwork.height + 1} 0.5`);
+    spotlight.setAttribute("rotation", "-90 0 0");
+    spotlight.setAttribute("intensity", "0.6");
+    spotlight.setAttribute("angle", "30");
+    spotlight.setAttribute("penumbra", "0.3");
+    spotlight.setAttribute("decay", "1");
+    spotlight.setAttribute("distance", "5");
+    spotlight.setAttribute("color", "#FFFFFF");
+    spotlight.setAttribute("castShadow", "false");
+
+    // Add performance attributes to artwork image
+    artwork.setAttribute("renderer", "antialias: false");
+    artwork.setAttribute("material", {
+      shader: "flat",
+      npot: false,
+    });
+
+    artworkContainer.appendChild(spotlight);
+    artworkContainer.appendChild(frame);
     parent.appendChild(artworkContainer);
   });
 }
@@ -225,12 +386,17 @@ function setupLighting(parent) {
   ambient.setAttribute("intensity", "0.35");
   parent.appendChild(ambient);
 
-  // Point lights in each quadrant of the room
+  // More point lights for larger space
   const pointLights = [
-    { position: "3 5.5 -3", intensity: "0.15" },
-    { position: "-3 5.5 -3", intensity: "0.15" },
-    { position: "3 5.5 3", intensity: "0.15" },
-    { position: "-3 5.5 3", intensity: "0.15" },
+    { position: "6 9.5 -6", intensity: "0.15" },
+    { position: "-6 9.5 -6", intensity: "0.15" },
+    { position: "6 9.5 6", intensity: "0.15" },
+    { position: "-6 9.5 6", intensity: "0.15" },
+    { position: "0 9.5 0", intensity: "0.15" },
+    { position: "-10 9.5 0", intensity: "0.15" },
+    { position: "10 9.5 0", intensity: "0.15" },
+    { position: "0 9.5 -10", intensity: "0.15" },
+    { position: "0 9.5 10", intensity: "0.15" },
   ];
 
   pointLights.forEach((light) => {
@@ -239,7 +405,7 @@ function setupLighting(parent) {
     pointLight.setAttribute("position", light.position);
     pointLight.setAttribute("intensity", light.intensity);
     pointLight.setAttribute("decay", "2");
-    pointLight.setAttribute("distance", "10");
+    pointLight.setAttribute("distance", "15");
     parent.appendChild(pointLight);
   });
 }

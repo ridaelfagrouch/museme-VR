@@ -4,7 +4,7 @@ AFRAME.registerComponent("smooth-navigation", {
     this.destination = null;
     this.startPosition = null;
     this.startTime = null;
-    this.duration = 800; // Duration in milliseconds
+    this.duration = 800;
 
     this.el.addEventListener("click", this.handleClick.bind(this));
     this.animate = this.animate.bind(this);

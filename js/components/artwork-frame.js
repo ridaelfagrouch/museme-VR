@@ -7,9 +7,9 @@ AFRAME.registerComponent("artwork-frame", {
   },
 
   init: function () {
-    // Create the artwork first
+    // Create the artwork
     this.createArtwork();
-    // Then create the frame around it
+    // create the frame around it
     this.createFrame();
     // Add lighting
     this.createSpotlight();
