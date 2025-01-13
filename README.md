@@ -43,20 +43,3 @@ An immersive virtual reality art gallery built entirely with client-side web tec
 * Movement is always relative to camera direction
 * Vertical camera rotation is limited to prevent over-rotation
 * Movement is bounded within museum walls
-
-## File Structure
-
-.
-├── index.html              # Main entry point
-├── css/
-│   └── styles.css         # Custom styles
-├── js/
-│   ├── main.js           # Core application logic
-│   └── components/       # A-Frame components
-│       ├── artwork-frame.js
-│       ├── artwork-zoom.js
-│       ├── info-panel.js
-│       └── smooth-navigation.js
-└── assets/
-    ├── artwork/         # Artwork images
-    └── textures/        # Environment textures

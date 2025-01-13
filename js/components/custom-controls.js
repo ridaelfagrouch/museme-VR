@@ -12,14 +12,14 @@ AFRAME.registerComponent("custom-controls", {
 
     // State for keys
     this.keys = {
-      ArrowUp: false, // Backward
-      ArrowDown: false, // Forward
-      ArrowLeft: false, // Strafe right (reversed)
-      ArrowRight: false, // Strafe left (reversed)
-      KeyW: false, // Look down
-      KeyS: false, // Look up
-      KeyA: false, // Look left (reversed)
-      KeyD: false, // Look right (reversed)
+      ArrowUp: false,
+      ArrowDown: false,
+      ArrowLeft: false,
+      ArrowRight: false,
+      KeyW: false,
+      KeyS: false,
+      KeyA: false,
+      KeyD: false, 
     };
 
     // Museum boundaries
@@ -79,7 +79,7 @@ AFRAME.registerComponent("custom-controls", {
 
       // Get camera's forward direction
       camera.getWorldDirection(this.cameraDirection);
-      this.cameraDirection.y = 0; // Keep movement horizontal
+      this.cameraDirection.y = 0;
       this.cameraDirection.normalize();
 
       // Calculate right vector for strafing
@@ -99,12 +99,12 @@ AFRAME.registerComponent("custom-controls", {
         );
       }
 
-      // Strafe movement (reversed)
+      // Strafe movement
       if (this.keys.ArrowLeft) {
-        this.moveVector.add(this.sideVector.clone().multiplyScalar(moveSpeed)); // Reversed
+        this.moveVector.add(this.sideVector.clone().multiplyScalar(moveSpeed));
       }
       if (this.keys.ArrowRight) {
-        this.moveVector.add(this.sideVector.clone().multiplyScalar(-moveSpeed)); // Reversed
+        this.moveVector.add(this.sideVector.clone().multiplyScalar(-moveSpeed));
       }
 
       // Calculate new position
@@ -130,7 +130,6 @@ AFRAME.registerComponent("custom-controls", {
       rotation.x -= lookSpeed; // Look up
     }
 
-    // Horizontal rotation (A/D) - reversed
     if (this.keys.KeyA) {
       rotation.y += lookSpeed; // Look left
     }
